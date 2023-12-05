@@ -13,16 +13,17 @@ import (
 func main() {
     connStr := "dbname=piravraria sslmode=disable"
     db, err := sql.Open("postgres", connStr)
+    defer db.Close()
     if err != nil {
 		log.Fatal(err)
 	}
 
+    var autenticado = cli.Autenticar(db)
 
-    if !cli.Autenticar(db) {
+    if autenticado {
         fmt.Println("Desligando o sistema")
         os.Exit(0)
     }
 
-    fmt.Println("Bem-vindo ao terminal da piravraria.")
-
+    cli.ShowMenu(db)
 }
