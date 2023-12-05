@@ -9,7 +9,7 @@ import (
 )
 
 func listarClientesEEndereco(db *sql.DB) {
-    rows, err := db.Query("SELECT nome, email, cep, uf, localidade, logradouro, numero, complemento FROM cliente INNER JOIN endereco ON cliente.endereco_id = endereco.id;", nome, senha)
+    rows, err := db.Query("SELECT nome, email, cep, uf, localidade, logradouro, numero, complemento FROM cliente INNER JOIN endereco ON cliente.endereco_id = endereco.id;")
     defer rows.Close()
     if err != nil {
         log.Fatal(err)
@@ -17,14 +17,12 @@ func listarClientesEEndereco(db *sql.DB) {
     table := tablewriter.NewWriter(os.Stdout)
     table.SetHeader([]string{"nome", "email", "cep", "uf", "localidade", "logradouro", "numero", "complemento"})
 
-    var nome, email, cep, uf, localidade, logradouro, numero, complemento string
     for rows.Next() {
-        queryTable := [][]string {
-
-        }
+    var nome, email, cep, uf, localidade, logradouro, numero, complemento string
         rows.Scan(&nome, &email, &cep, &uf, &localidade, &logradouro, &numero, &complemento)
-        table.Append()
+        table.Append([]string {nome, email, cep, uf, localidade, logradouro, numero, complemento})
     }
+    table.Render()
 }
 
 
