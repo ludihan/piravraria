@@ -13,6 +13,8 @@ Este é o repositório do trabalho final da disciplina Ambiente de dados da Unif
 
 O projeto foi feito usando o SGBD open-source postgress e a linguagem de programação Go e segue as orientações fornecidas [aqui](orientacoes.pdf).
 
+O banco de dados foi feito para uma livraria fictícia chamada Piravraria. Mais informações sobre ela podem ser encontradas [aqui](piravraria.pdf).
+
 ## Orientações
 
 ### Passo 1
