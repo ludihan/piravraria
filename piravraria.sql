@@ -111,11 +111,11 @@ INSERT INTO editora (nome, email, data_fundacao, royalties) VALUES
 
 
 INSERT INTO livro (isbn, editora_id, titulo, titulo_original, classificacao_etaria, descricao, edicao, idioma, preco_base) VALUES
-('1234567890123', 1, 'Livro A', 'Original A', '16', 'Descrição A', '1ª Edição', 'Português', 29.99),
-('2345678901234', 2, 'Livro B', NULL, '14', 'Descrição B', '2ª Edição', 'Inglês', 19.99),
-('3456789012345', 3, 'Livro C', 'Original C', '10', 'Descrição C', '3ª Edição', 'Espanhol', 39.99),
-('4567890123456', 1, 'Livro D', 'Original D', '18', 'Descrição D', '4ª Edição', 'Português', 15.99),
-('5678901234567', 4, 'Livro E', NULL, '12', 'Descrição E', '5ª Edição', 'Francês', 24.99);
+('1234567890123', 1, 'Livro A', 'Original A', '16', 'Descrição A', '1ª Edição', 'pt', 29.99),
+('2345678901234', 2, 'Livro B', NULL, '14', 'Descrição B', '2ª Edição', 'en', 19.99),
+('3456789012345', 3, 'Livro C', 'Original C', '10', 'Descrição C', '3ª Edição', 'es', 39.99),
+('4567890123456', 1, 'Livro D', 'Original D', '18', 'Descrição D', '4ª Edição', 'pt', 15.99),
+('5678901234567', 4, 'Livro E', NULL, '12', 'Descrição E', '5ª Edição', 'fr', 24.99);
 
 
 INSERT INTO desconto (isbn, porcentagem, data_inicio, data_fim, evento_atrelado) VALUES
