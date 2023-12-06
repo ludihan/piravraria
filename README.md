@@ -4,8 +4,8 @@
 
 - [Guilherme Farias (2214635)](https://github.com/G-FARIAS-71)
 - [Lucca Han (2214677)](https://github.com/Ludihan)
-- [Matheus Najal (2219156)](https://github.com/gabrielxsmarinho)
-- [Marcos Antônio (2214668)](https://github.com/cabralski)
+- [Matheus Najal (2219156)](https://github.com/matheusnajal)
+- [Marcos Antônio (2214668)](https://github.com/jekker9)
 
 ## Visão geral do Repositório
 
