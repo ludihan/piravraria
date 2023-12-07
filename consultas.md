@@ -24,7 +24,7 @@ FROM livro;
 
 ### Álgebra relacional
 
-$ \gamma_{\text{count}()}(\text{livro}) $
+$\gamma_{\text{count}()}(\text{livro})$
 
 ## 3. Selecione o nome e e-mail do autor (SQL e Álgebra Relacional) 
 
@@ -38,7 +38,7 @@ FROM autor;
 
 ### Álgebra relacional
 
-$ \pi_{\text{nome}, \text{email}}(\text{autor}) $
+$\pi_{\text{nome}, \text{email}}(\text{autor})$
 
 ## 4. Selecione os autores que nasceram no mês de dezembro (SQL)
 
