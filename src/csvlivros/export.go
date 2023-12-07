@@ -9,7 +9,7 @@ import (
 )
 
 func ExportarLivros(db *sql.DB) {
-    f, err := os.Create("livros " + time.Now().Format("01-02-2006 15:04:05 Monday"))
+    f, err := os.Create("livros " + time.Now().Format("01-02-2006 15:04:05 Monday") + ".csv")
     if err != nil {
         log.Fatal(err)
     }
