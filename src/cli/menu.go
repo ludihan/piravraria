@@ -1,42 +1,33 @@
-package cli;
+package cli
 
 import (
-    "database/sql"
-    "fmt"
-    "os"
+	"database/sql"
+	"fmt"
+	"os"
+	"piravraria/cli/crudlivros"
+	"piravraria/csvlivros"
+	"piravraria/input"
 )
 
 func ShowMenu(db *sql.DB) {
     fmt.Println("Bem-vindo ao terminal da piravraria.")
-
-    var input string
+    var bufferInput string
+    var prompt string = "Opções:\n" +
+    "\t1 - CRUD para livros              (CRUD)\n" +
+    "\t2 - Mostrar clientes com endereço (SELECT COM JOIN)\n" +
+    "\t3 - Sair do programa              (EXIT)\n" +
+    "$ "
 
     for {
-        fmt.Print(
-            "Opções:\n",
-            "1 - (SELECT)     Listar entidades\n",
-            "2 - (INSERT)     Inserir entidades\n",
-            "3 - (CSV IMPORT) Inserir entidades\n",
-            "4 - (CSV EXPORT) Expotar entidades\n",
-            "5 - Sair do program\n",
-            "$ ",
-        )
+        bufferInput = input.GetString(prompt)
 
-        if _, err := fmt.Scanln(&input); err != nil {
-            fmt.Println("\n", err)
-            continue
-        }
-
-        switch input {
+        switch bufferInput {
         case "1":
-            menuSelect(db)
+            showMenuCRUD(db)
         case "2":
-            menuInsert(db)
+            selectClienteEndereco(db)
         case "3":
-            menuCSVImport(db)
-        case "4":
-            menuCSVExport(db)
-        case "5":
+            fmt.Println("Vá com Deus")
             os.Exit(0)
         default:
             fmt.Println("Não é uma opção válida.")
@@ -44,132 +35,39 @@ func ShowMenu(db *sql.DB) {
     }
 }
 
-func menuSelect(db *sql.DB) {
-
-    var input string
+func showMenuCRUD(db *sql.DB) {
+    var bufferInput string
+    var prompt string =
+    "Opcões:\n" +
+    "\t1 - Inserir livros            (CREATE)\n" +
+    "\t2 - Mostrar livros            (READ)\n" +
+    "\t3 - Mudar livros              (UPDATE)\n" +
+    "\t4 - Deletar livros            (DELETE)\n" +
+    "\t5 - Importar CSV              (IMPORT CSV)\n" +
+    "\t6 - Exportar CSV              (EXPORT CSV)\n" +
+    "\t7 - Voltar pro menu principal (EXIT)\n" +
+    "$ "
 
     for {
-        fmt.Print(
-            "SELECT:\n",
-            "1 - Voltar\n",
-            "2 - Cliente e endereço\n",
-            "3 - Livro e autor\n",
-            "4 - Livro\n",
-            "$ ",
-        )
+        bufferInput = input.GetString(prompt)
 
-        if _, err := fmt.Scanln(&input); err != nil {
-            fmt.Println("\n", err)
-            continue
-        }
-
-        switch input {
+        switch bufferInput {
         case "1":
-            return
+            crudlivros.CreateLivros(db)
         case "2":
-            selectClienteEndereco(db)
+            crudlivros.ReadLivros(db)
         case "3":
-            selectLivroAutor(db)
+            crudlivros.UpdateLivros(db)
         case "4":
-            selectLivro(db)
-        default:
-            fmt.Println("Não é uma opção válida.")
-        }
-    }
-}
-
-func menuInsert(db *sql.DB) {
-    var input string
-
-    for {
-        fmt.Print(
-            "INSERT:\n",
-            "1 - Voltar\n",
-            "2 - Livro\n",
-            "$ ",
-        )
-
-        if _, err := fmt.Scanln(&input); err != nil {
-            fmt.Println("\n", err)
-            continue
-        }
-
-        switch input {
-        case "1":
-            return
-        case "2":
-            insertLivro(db)
-        default:
-            fmt.Println("Não é uma opção válida.")
-        }
-    }
-
-}
-
-func menuCSVImport(db *sql.DB) {
-    var input string
-
-    for {
-        fmt.Print(
-            "SELECT:\n",
-            "1 - Cliente e endereço\n",
-            "2 - Livro e autor\n",
-            "3 - Livro e categoria\n",
-            "4 - Voltar\n",
-            "$ ",
-        )
-
-        if _, err := fmt.Scanln(&input); err != nil {
-            fmt.Println("\n", err)
-            continue
-        }
-
-        switch input {
-        case "1":
-            selectClienteEndereco(db)
-        case "2":
-            menuInsert(db)
-        case "3":
-            menuCSVImport(db)
-        case "4":
+            crudlivros.DeleteLivros(db)
+        case "5":
+            csvlivros.ImportarLivros(db)
+        case "6":
+            csvlivros.ExportarLivros(db)
+        case "7":
             return
         default:
             fmt.Println("Não é uma opção válida.")
         }
     }
-
-}
-
-func menuCSVExport(db *sql.DB) {
-    var input string
-
-    for {
-        fmt.Print(
-            "SELECT:\n",
-            "1 - Cliente e endereço\n",
-            "2 - Livro e autor\n",
-            "3 - Livro e categoria\n",
-            "4 - Voltar\n",
-            "$ ",
-        )
-
-        if _, err := fmt.Scanln(&input); err != nil {
-            fmt.Println("\n", err)
-            continue
-        }
-
-        switch input {
-        case "1":
-            selectClienteEndereco(db)
-        case "2":
-            menuInsert(db)
-        case "3":
-            menuCSVImport(db)
-        case "4":
-            return
-        default:
-            fmt.Println("Não é uma opção válida.")
-        }
-    }
-
 }

@@ -25,6 +25,8 @@ CREATE TABLE livro (
     preco_base numeric(10,2) NOT NULL
 );
 
+CREATE INDEX idx_livro_isbn ON livro(isbn);
+
 CREATE TABLE desconto (
     id SERIAL PRIMARY KEY,
     isbn VARCHAR(255) NOT NULL REFERENCES livro(isbn),

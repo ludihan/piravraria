@@ -1,10 +1,11 @@
 package cli
 
 import (
-	"database/sql"
-	"fmt"
-	"log"
-	"strings"
+    "piravraria/input"
+    "database/sql"
+    "fmt"
+    "log"
+    "strings"
 )
 
 type Admin struct {
@@ -13,17 +14,11 @@ type Admin struct {
 }
 
 func Autenticar(db *sql.DB) bool {
-    fmt.Print("Nome:  ")
     var nome, senha string
 
-    if _, err := fmt.Scanln(&nome); err != nil {
-        log.Fatal(err)
-    }
+    nome = input.GetString("Nome: ")
+    senha = input.GetString("Senha: ")
 
-    fmt.Print("Senha: ")
-    if _, err := fmt.Scanln(&senha); err != nil {
-        log.Fatal(err)
-    }
 
     nome = strings.TrimSpace(nome)
     senha = strings.TrimSpace(senha)

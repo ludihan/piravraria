@@ -21,7 +21,7 @@ func main() {
 	var autenticado = cli.Autenticar(db)
 
 	if !autenticado {
-		fmt.Println("Desligando o sistema")
+		fmt.Println("Saindo da aplicação")
 		os.Exit(0)
 	}
 
